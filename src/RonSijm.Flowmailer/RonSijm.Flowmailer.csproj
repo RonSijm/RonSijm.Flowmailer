@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net6.0;net7.0;net481</TargetFrameworks>
+    <LangVersion>11</LangVersion>
+    <VersionPrefix>1.0.3</VersionPrefix>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>RonSijm.Flowmailer</Title>
+    <Authors>Ron Sijm</Authors>
+    <Company>Ron Sijm</Company>
+    <Description>C# client library implementing all Flowmailer API methods</Description>
+    <PackageProjectUrl>https://github.com/RonSijm/RonSijm.Flowmailer</PackageProjectUrl>
+    <Configurations>Debug;Release;Core7</Configurations>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+
+</Project>
