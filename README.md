@@ -32,7 +32,7 @@ Implemented methods:
  - Endpoint: Task<string> GetEventFlowRules(CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/event_flow_rules/hierarchy
- - Endpoint: Task<string> GetEventFlowRulesHierarchy(CancellationToken cancellationToken = default)
+ - Endpoint: Task<string> GetHierarchyByEventFlowRules(CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/event_flows
  - Endpoint: Task<List<EventFlow>> ListEventFlows(CancellationToken cancellationToken = default)
@@ -50,10 +50,10 @@ Implemented methods:
  - Endpoint: Task<EventFlow> SaveEventFlows(EventFlow request, string event_flow_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/event_flows/{event_flow_id}/rule
- - Endpoint: Task<EventFlowRuleSimple> GetEventFlowsRule(string event_flow_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<EventFlowRuleSimple> GetRuleByEventFlows(string event_flow_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/event_flows/{event_flow_id}/rule
- - Endpoint: Task<string> SetEventFlowsRule(EventFlowRuleSimple request, string event_flow_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<string> SetRuleByEventFlows(EventFlowRuleSimple request, string event_flow_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/filters
  - Endpoint: Task<List<Filter>> ListFilters(ref_range range, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
@@ -83,16 +83,16 @@ Implemented methods:
  - Endpoint: Task<Flow> SaveFlows(Flow request, string flow_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/flows/{flow_id}/messages
- - Endpoint: Task<List<Message>> ListFlowsMessages(date_range daterange, string flow_id, items_range range, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<List<Message>> ListMessagesPerFlow(date_range daterange, string flow_id, items_range range, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/flows/{flow_id}/rule
- - Endpoint: Task<FlowRuleSimple> GetFlowsRule(string flow_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<FlowRuleSimple> GetRuleForFlow(string flow_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/flows/{flow_id}/rule
- - Endpoint: Task<string> SetFlowsRule(FlowRuleSimple request, string flow_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<string> SetRuleForFlow(FlowRuleSimple request, string flow_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/flows/{flow_id}/stats
- - Endpoint: Task<DataSets> GetFlowsStats(date_range daterange, string flow_id, int interval = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<DataSets> GetStatsForFlow(date_range daterange, string flow_id, int interval = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/message_events
  - Endpoint: Task<List<MessageEvent>> ListMessageEvents(ref_range range, bool addmessagetags = default, date_range daterange = default, List<string> flow_ids = default, date_range receivedrange = default, string sortorder = default, List<string> source_ids = default, CancellationToken cancellationToken = default)
@@ -107,25 +107,25 @@ Implemented methods:
  - Endpoint: Task<List<Message>> ListMessages(ref_range range, bool addevents = default, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, List<string> flow_ids = default, string sortfield = default, string sortorder = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/messages/simulate
- - Endpoint: Task<SimulateMessageResult> SimulateMessagesSimulate(SimulateMessage request, CancellationToken cancellationToken = default)
+ - Endpoint: Task<SimulateMessageResult> SimulateMessages(SimulateMessage request, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/messages/submit
- - Endpoint: Task<string> SendMessagesSubmit(SubmitMessage request, CancellationToken cancellationToken = default)
+ - Endpoint: Task<string> SendMessages(SubmitMessage request, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/messages/{message_id}
  - Endpoint: Task<Message> GetMessages(string message_id, bool addtags = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/messages/{message_id}/archive
- - Endpoint: Task<List<MessageArchive>> ListMessagesArchive(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<List<MessageArchive>> ListArchiveByMessage(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/messages/{message_id}/archive/{flow_step_id}/attachment/{content_id}
- - Endpoint: Task<Attachment> FetchMessagesArchiveAttachmentByFlowStepIdAndContentId(string content_id, string flow_step_id, string message_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<Attachment> FetchAttachmentByArchiveAndMessageByFlowStepIdAndContentId(string content_id, string flow_step_id, string message_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/messages/{message_id}/error_archive
- - Endpoint: Task<MessageArchive> GetMessagesErrorArchive(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<MessageArchive> GetErrorArchiveByMessages(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/messages/{message_id}/resend
- - Endpoint: Task<string> ResendMessagesResend(ResendMessage request, string message_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<string> ResendMessages(ResendMessage request, string message_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/messagestats
  - Endpoint: Task<DataSets> GetMessagestats(date_range daterange, List<string> flow_ids = default, int interval = default, CancellationToken cancellationToken = default)
@@ -134,10 +134,10 @@ Implemented methods:
  - Endpoint: Task<Recipient> GetRecipient(string recipient, date_range daterange = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/recipient/{recipient}/messages
- - Endpoint: Task<List<Message>> ListRecipientMessages(ref_range range, string recipient, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<List<Message>> ListMessagesPerRecipient(ref_range range, string recipient, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sender/{sender}/messages
- - Endpoint: Task<List<Message>> ListSenderMessages(ref_range range, string sender, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<List<Message>> ListMessagesPerSender(ref_range range, string sender, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sender_domains
  - Endpoint: Task<List<SenderDomain>> ListSenderDomains(CancellationToken cancellationToken = default)
@@ -146,10 +146,10 @@ Implemented methods:
  - Endpoint: Task<string> CreateSenderDomains(SenderDomain request, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sender_domains/by_domain/{domain}
- - Endpoint: Task<SenderDomain> GetSenderDomainsByDomain(string domain, bool validate = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<SenderDomain> GetByDomainBySenderDomains(string domain, bool validate = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sender_domains/validate
- - Endpoint: Task<SenderDomain> SaveSenderDomainsValidate(SenderDomain request, CancellationToken cancellationToken = default)
+ - Endpoint: Task<SenderDomain> ValidatesSenderDomains(SenderDomain request, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sender_domains/{domain_id}
  - Endpoint: Task<string> DeleteSenderDomains(string domain_id, CancellationToken cancellationToken = default)
@@ -191,28 +191,28 @@ Implemented methods:
  - Endpoint: Task<string> UpdateSources(Source request, string source_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sources/{source_id}/messages
- - Endpoint: Task<List<Message>> ListSourcesMessages(date_range daterange, items_range range, string source_id, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<List<Message>> ListMessagesPerSource(date_range daterange, items_range range, string source_id, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sources/{source_id}/stats
- - Endpoint: Task<DataSets> GetSourcesStats(date_range daterange, string source_id, int interval = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<DataSets> GetStatsForSource(date_range daterange, string source_id, int interval = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sources/{source_id}/users
- - Endpoint: Task<List<Credentials>> ListSourcesUsers(string source_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<List<Credentials>> ListUsersPerSource(string source_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sources/{source_id}/users
- - Endpoint: Task<Credentials> PostSourcesUsers(Credentials request, string source_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<Credentials> PostUsersBySources(Credentials request, string source_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sources/{source_id}/users/{user_id}
- - Endpoint: Task<string> DeleteSourcesUsers(string source_id, string user_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<string> DeleteUsersBySources(string source_id, string user_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sources/{source_id}/users/{user_id}
- - Endpoint: Task<Credentials> GetSourcesUsers(string source_id, string user_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<Credentials> GetUsersBySources(string source_id, string user_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/sources/{source_id}/users/{user_id}
- - Endpoint: Task<Credentials> UpdateSourcesUsers(Credentials request, string source_id, string user_id, CancellationToken cancellationToken = default)
+ - Endpoint: Task<Credentials> UpdateUsersBySources(Credentials request, string source_id, string user_id, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/tag/{tag}/messages
- - Endpoint: Task<List<Message>> ListTagMessages(ref_range range, string tag, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+ - Endpoint: Task<List<Message>> ListMessagesPerTag(ref_range range, string tag, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
 ---
  - Url: https://api.flowmailer.net/{account_id}/templates
  - Endpoint: Task<List<Template>> ListTemplates(CancellationToken cancellationToken = default)

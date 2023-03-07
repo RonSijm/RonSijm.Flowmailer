@@ -3,16 +3,6 @@
 public interface IFlowMailerClient
 {
     /// <summary>
-    /// This call is used to request an access token using the client id and secret provided by flowmailer.
-    /// <param name="client_id">The API client id provided by Flowmailer</param>
-    /// <param name="client_secret">The API client secret provided by Flowmailer</param>
-    /// <param name="grant_type">must be <code>client_credentials</code></param>
-    /// <param name="scope">Must be absent or <code>api</code></param>
-    /// <param name="cancellationToken">A token to cancel the request</param>
-    /// </summary>
-    Task<OAuthTokenResponse> RequestOauthToken(string client_id, string client_secret, string grant_type, string scope = default, CancellationToken cancellationToken = default);
-
-    /// <summary>
     /// Get flow rule list for all event flows
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
@@ -22,7 +12,7 @@ public interface IFlowMailerClient
     /// Get flow rule list for all event flows
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<string> GetEventFlowRulesHierarchy(CancellationToken cancellationToken = default);
+    Task<string> GetHierarchyByEventFlowRules(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List flows per account
@@ -64,7 +54,7 @@ public interface IFlowMailerClient
     /// <param name="event_flow_id">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<EventFlowRuleSimple> GetEventFlowsRule(string event_flow_id, CancellationToken cancellationToken = default);
+    Task<EventFlowRuleSimple> GetRuleByEventFlows(string event_flow_id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Set conditions for a flow
@@ -72,7 +62,7 @@ public interface IFlowMailerClient
     /// <param name="event_flow_id">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<string> SetEventFlowsRule(EventFlowRuleSimple request, string event_flow_id, CancellationToken cancellationToken = default);
+    Task<string> SetRuleByEventFlows(EventFlowRuleSimple request, string event_flow_id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List filters per account
@@ -148,14 +138,14 @@ public interface IFlowMailerClient
     /// <param name="addtags"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<List<Message>> ListFlowsMessages(date_range daterange, string flow_id, items_range range, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default);
+    Task<List<Message>> ListMessagesPerFlow(date_range daterange, string flow_id, items_range range, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get flow conditions for a flow
     /// <param name="flow_id">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<FlowRuleSimple> GetFlowsRule(string flow_id, CancellationToken cancellationToken = default);
+    Task<FlowRuleSimple> GetRuleForFlow(string flow_id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Set conditions for a flow
@@ -163,7 +153,7 @@ public interface IFlowMailerClient
     /// <param name="flow_id">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<string> SetFlowsRule(FlowRuleSimple request, string flow_id, CancellationToken cancellationToken = default);
+    Task<string> SetRuleForFlow(FlowRuleSimple request, string flow_id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get time based message statistics for a message flow
@@ -172,7 +162,7 @@ public interface IFlowMailerClient
     /// <param name="interval">Time difference between samples</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<DataSets> GetFlowsStats(date_range daterange, string flow_id, int interval = default, CancellationToken cancellationToken = default);
+    Task<DataSets> GetStatsForFlow(date_range daterange, string flow_id, int interval = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List message events
@@ -222,14 +212,14 @@ public interface IFlowMailerClient
     /// <param name="request"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<SimulateMessageResult> SimulateMessagesSimulate(SimulateMessage request, CancellationToken cancellationToken = default);
+    Task<SimulateMessageResult> SimulateMessages(SimulateMessage request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Send an email or sms message
     /// <param name="request"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<string> SendMessagesSubmit(SubmitMessage request, CancellationToken cancellationToken = default);
+    Task<string> SendMessages(SubmitMessage request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get message by id
@@ -246,7 +236,7 @@ public interface IFlowMailerClient
     /// <param name="adddata"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<List<MessageArchive>> ListMessagesArchive(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default);
+    Task<List<MessageArchive>> ListArchiveByMessage(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Fetch an attachment including data for an archived message
@@ -255,9 +245,9 @@ public interface IFlowMailerClient
     /// <param name="message_id">Message ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<Attachment> FetchMessagesArchiveAttachmentByFlowStepIdAndContentId(string content_id, string flow_step_id, string message_id, CancellationToken cancellationToken = default);
+    Task<Attachment> FetchAttachmentByArchiveAndMessageByFlowStepIdAndContentId(string content_id, string flow_step_id, string message_id, CancellationToken cancellationToken = default);
 
-    Task<MessageArchive> GetMessagesErrorArchive(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default);
+    Task<MessageArchive> GetErrorArchiveByMessages(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Resend message by id
@@ -265,7 +255,7 @@ public interface IFlowMailerClient
     /// <param name="message_id">Message ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<string> ResendMessagesResend(ResendMessage request, string message_id, CancellationToken cancellationToken = default);
+    Task<string> ResendMessages(ResendMessage request, string message_id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get time based message statistics for whole account
@@ -295,7 +285,7 @@ public interface IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<List<Message>> ListRecipientMessages(ref_range range, string recipient, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default);
+    Task<List<Message>> ListMessagesPerRecipient(ref_range range, string recipient, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List messages per sender
@@ -308,7 +298,7 @@ public interface IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<List<Message>> ListSenderMessages(ref_range range, string sender, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default);
+    Task<List<Message>> ListMessagesPerSender(ref_range range, string sender, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List sender domains by account
@@ -329,14 +319,14 @@ public interface IFlowMailerClient
     /// <param name="validate">Validate DNS records for this SenderDomain</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<SenderDomain> GetSenderDomainsByDomain(string domain, bool validate = default, CancellationToken cancellationToken = default);
+    Task<SenderDomain> GetByDomainBySenderDomains(string domain, bool validate = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Validates but does not save a sender domain.
     /// <param name="request">the sender domain to validate</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<SenderDomain> SaveSenderDomainsValidate(SenderDomain request, CancellationToken cancellationToken = default);
+    Task<SenderDomain> ValidatesSenderDomains(SenderDomain request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Delete sender domain
@@ -425,7 +415,7 @@ public interface IFlowMailerClient
     /// <param name="addtags"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<List<Message>> ListSourcesMessages(date_range daterange, items_range range, string source_id, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default);
+    Task<List<Message>> ListMessagesPerSource(date_range daterange, items_range range, string source_id, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get time based message statistics for a message source
@@ -434,19 +424,19 @@ public interface IFlowMailerClient
     /// <param name="interval">Time difference between samples</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<DataSets> GetSourcesStats(date_range daterange, string source_id, int interval = default, CancellationToken cancellationToken = default);
+    Task<DataSets> GetStatsForSource(date_range daterange, string source_id, int interval = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List credentials per source system
     /// <param name="source_id">Source ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<List<Credentials>> ListSourcesUsers(string source_id, CancellationToken cancellationToken = default);
+    Task<List<Credentials>> ListUsersPerSource(string source_id, CancellationToken cancellationToken = default);
 
-    Task<Credentials> PostSourcesUsers(Credentials request, string source_id, CancellationToken cancellationToken = default);
-    Task<string> DeleteSourcesUsers(string source_id, string user_id, CancellationToken cancellationToken = default);
-    Task<Credentials> GetSourcesUsers(string source_id, string user_id, CancellationToken cancellationToken = default);
-    Task<Credentials> UpdateSourcesUsers(Credentials request, string source_id, string user_id, CancellationToken cancellationToken = default);
+    Task<Credentials> PostUsersBySources(Credentials request, string source_id, CancellationToken cancellationToken = default);
+    Task<string> DeleteUsersBySources(string source_id, string user_id, CancellationToken cancellationToken = default);
+    Task<Credentials> GetUsersBySources(string source_id, string user_id, CancellationToken cancellationToken = default);
+    Task<Credentials> UpdateUsersBySources(Credentials request, string source_id, string user_id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List messages per tag
@@ -459,7 +449,7 @@ public interface IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    Task<List<Message>> ListTagMessages(ref_range range, string tag, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default);
+    Task<List<Message>> ListMessagesPerTag(ref_range range, string tag, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// List templates by account
