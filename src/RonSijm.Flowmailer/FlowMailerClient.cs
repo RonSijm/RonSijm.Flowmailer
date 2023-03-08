@@ -36,7 +36,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// Get flow rule list for all event flows
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> GetHierarchyByEventFlowRules(CancellationToken cancellationToken = default)
+    public async Task<string> GetHierarchyFlowEventFlowRules(CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -118,10 +118,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Delete flow by id
-    /// <param name="event_flow_id">Flow ID</param>
+    /// <param name="eventFlowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> DeleteEventFlows(string event_flow_id, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteEventByEventFlowId(string eventFlowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -130,7 +130,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{event_flow_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{eventFlowId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -148,10 +148,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get flow by id
-    /// <param name="event_flow_id">Flow ID</param>
+    /// <param name="eventFlowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<EventFlow> GetEventFlows(string event_flow_id, CancellationToken cancellationToken = default)
+    public async Task<EventFlow> GetEventByEventFlowId(string eventFlowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -160,7 +160,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{event_flow_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{eventFlowId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -174,10 +174,10 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Save flow
     /// <param name="request">Flow object</param>
-    /// <param name="event_flow_id">Flow ID</param>
+    /// <param name="eventFlowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<EventFlow> SaveEventFlows(EventFlow request, string event_flow_id, CancellationToken cancellationToken = default)
+    public async Task<EventFlow> SaveEventByEventFlowId(EventFlow request, string eventFlowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -186,7 +186,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{event_flow_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{eventFlowId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -200,10 +200,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get flow conditions for a flow
-    /// <param name="event_flow_id">Flow ID</param>
+    /// <param name="eventFlowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<EventFlowRuleSimple> GetRuleByEventFlows(string event_flow_id, CancellationToken cancellationToken = default)
+    public async Task<EventFlowRuleSimple> GetRuleForAEventByEventFlowId(string eventFlowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -212,7 +212,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{event_flow_id}/rule";
+        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{eventFlowId}/rule";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -226,10 +226,10 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Set conditions for a flow
     /// <param name="request">Flow conditions</param>
-    /// <param name="event_flow_id">Flow ID</param>
+    /// <param name="eventFlowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> SetRuleByEventFlows(EventFlowRuleSimple request, string event_flow_id, CancellationToken cancellationToken = default)
+    public async Task<string> SetRuleForAEventByEventFlowId(EventFlowRuleSimple request, string eventFlowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -238,7 +238,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{event_flow_id}/rule";
+        var url = $"https://api.flowmailer.net/{_accountId}/event_flows/{eventFlowId}/rule";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -293,10 +293,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Delete a recipient from the filter
-    /// <param name="filter_id">Filter ID</param>
+    /// <param name="filterId">Filter ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> DeleteFilters(string filter_id, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteFilter(string filterId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -305,7 +305,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/filters/{filter_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/filters/{filterId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -379,7 +379,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="statistics">Whether to return statistics per flow</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Flow>> ListFlows(bool statistics = default, CancellationToken cancellationToken = default)
+    public async Task<List<Flow>> ListFlows(bool statistics = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -389,9 +389,9 @@ public partial class FlowMailerClient : IFlowMailerClient
         using var client = _clientFactory.CreateClient();
 
         var url = $"https://api.flowmailer.net/{_accountId}/flows";
-        if (statistics != default)
+        if (statistics)
         {
-            url += $"?statistics={statistics}";
+            url += "?statistics=true";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -408,7 +408,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="request">Flow object</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> CreateFlows(Flow request, CancellationToken cancellationToken = default)
+    public async Task<string> CreateFlow(Flow request, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -436,10 +436,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Delete flow by id
-    /// <param name="flow_id">Flow ID</param>
+    /// <param name="flowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> DeleteFlows(string flow_id, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteFlow(string flowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -448,7 +448,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flow_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flowId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -466,10 +466,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get flow by id
-    /// <param name="flow_id">Flow ID</param>
+    /// <param name="flowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<Flow> GetFlows(string flow_id, CancellationToken cancellationToken = default)
+    public async Task<Flow> GetFlow(string flowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -478,7 +478,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flow_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flowId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -492,10 +492,10 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Save flow
     /// <param name="request">Flow object</param>
-    /// <param name="flow_id">Flow ID</param>
+    /// <param name="flowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<Flow> SaveFlows(Flow request, string flow_id, CancellationToken cancellationToken = default)
+    public async Task<Flow> SaveFlow(Flow request, string flowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -504,7 +504,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flow_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flowId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -519,14 +519,14 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// List messages per flow
     /// <param name="daterange">Date range the message was submitted in</param>
-    /// <param name="flow_id">Flow ID</param>
+    /// <param name="flowId">Flow ID</param>
     /// <param name="range">Limits the returned list</param>
     /// <param name="addheaders">Whether to add e-mail headers</param>
     /// <param name="addonlinelink"></param>
     /// <param name="addtags"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessagesPerFlow(date_range daterange, string flow_id, items_range range, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessagesPerFlow(date_range daterange, string flowId, items_range range, bool addheaders = false, bool addonlinelink = false, bool addtags = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -535,14 +535,14 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flow_id}/messages";
+        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flowId}/messages";
         var firstParam = true;
-        if (addheaders != default)
+        if (addheaders)
         {
             firstParam = false;
-            url += $"?addheaders={addheaders}";
+            url += "?addheaders=true";
         }
-        if (addonlinelink != default)
+        if (addonlinelink)
         {
             if (firstParam)
             {
@@ -553,9 +553,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addonlinelink={addonlinelink}";
+            url += "?addonlinelink=true";
         }
-        if (addtags != default)
+        if (addtags)
         {
             if (firstParam)
             {
@@ -565,7 +565,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addtags={addtags}";
+            url += "?addtags=true";
         }
         if (daterange != default)
         {
@@ -584,10 +584,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get flow conditions for a flow
-    /// <param name="flow_id">Flow ID</param>
+    /// <param name="flowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<FlowRuleSimple> GetRuleForFlow(string flow_id, CancellationToken cancellationToken = default)
+    public async Task<FlowRuleSimple> GetRuleForAFlowConditions(string flowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -596,7 +596,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flow_id}/rule";
+        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flowId}/rule";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -610,10 +610,10 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Set conditions for a flow
     /// <param name="request">Flow conditions</param>
-    /// <param name="flow_id">Flow ID</param>
+    /// <param name="flowId">Flow ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> SetRuleForFlow(FlowRuleSimple request, string flow_id, CancellationToken cancellationToken = default)
+    public async Task<string> SetRuleForAFlow(FlowRuleSimple request, string flowId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -622,7 +622,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flow_id}/rule";
+        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flowId}/rule";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -642,11 +642,11 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Get time based message statistics for a message flow
     /// <param name="daterange">Date range the messages were submitted in</param>
-    /// <param name="flow_id">Flow ID</param>
+    /// <param name="flowId">Flow ID</param>
     /// <param name="interval">Time difference between samples</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<DataSets> GetStatsForFlow(date_range daterange, string flow_id, int interval = default, CancellationToken cancellationToken = default)
+    public async Task<DataSets> GetStatisticsForAFlow(date_range daterange, string flowId, int interval = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -655,7 +655,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flow_id}/stats";
+        var url = $"https://api.flowmailer.net/{_accountId}/flows/{flowId}/stats";
         if (daterange != default)
         {
             url += $";daterange={daterange}";
@@ -679,13 +679,13 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="range">Limits the returned list</param>
     /// <param name="addmessagetags">Message tags will be included with each event if this parameter is true</param>
     /// <param name="daterange"></param>
-    /// <param name="flow_ids">Filter results on message flow ID</param>
+    /// <param name="flowIds">Filter results on message flow ID</param>
     /// <param name="receivedrange"></param>
     /// <param name="sortorder"></param>
-    /// <param name="source_ids">Filter results on message source ID</param>
+    /// <param name="sourceIds">Filter results on message source ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<MessageEvent>> ListMessageEvents(ref_range range, bool addmessagetags = default, date_range daterange = default, List<string> flow_ids = default, date_range receivedrange = default, string sortorder = default, List<string> source_ids = default, CancellationToken cancellationToken = default)
+    public async Task<List<MessageEvent>> ListMessageEvents(ref_range range, bool addmessagetags = false, date_range daterange = default, List<string> flowIds = default, date_range receivedrange = default, string sortorder = default, List<string> sourceIds = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -696,10 +696,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         var url = $"https://api.flowmailer.net/{_accountId}/message_events";
         var firstParam = true;
-        if (addmessagetags != default)
+        if (addmessagetags)
         {
             firstParam = false;
-            url += $"?addmessagetags={addmessagetags}";
+            url += "?addmessagetags=true";
         }
         if (sortorder != default)
         {
@@ -717,17 +717,17 @@ public partial class FlowMailerClient : IFlowMailerClient
         {
             url += $";daterange={daterange}";
         }
-        if (flow_ids != default)
+        if (flowIds != default)
         {
-            url += $";flow_ids={flow_ids}";
+            url += $";flowIds={flowIds}";
         }
         if (receivedrange != default)
         {
             url += $";receivedrange={receivedrange}";
         }
-        if (source_ids != default)
+        if (sourceIds != default)
         {
-            url += $";source_ids={source_ids}";
+            url += $";sourceIds={sourceIds}";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -773,10 +773,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get a held message by its id
-    /// <param name="message_id">Message ID</param>
+    /// <param name="messageId">Message ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<MessageHold> GetMessageHold(string message_id, CancellationToken cancellationToken = default)
+    public async Task<MessageHold> GetMessageHold(string messageId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -785,7 +785,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/message_hold/{message_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/message_hold/{messageId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -804,12 +804,12 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="addonlinelink"></param>
     /// <param name="addtags"></param>
     /// <param name="daterange">Date range the message was submitted in</param>
-    /// <param name="flow_ids">Filter results on flow ID</param>
+    /// <param name="flowIds">Filter results on flow ID</param>
     /// <param name="sortfield">Sort by INSERTED or SUBMITTED (default INSERTED)</param>
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessages(ref_range range, bool addevents = default, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, List<string> flow_ids = default, string sortfield = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessages(ref_range range, bool addevents = false, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, List<string> flowIds = default, string sortfield = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -820,12 +820,12 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         var url = $"https://api.flowmailer.net/{_accountId}/messages";
         var firstParam = true;
-        if (addevents != default)
+        if (addevents)
         {
             firstParam = false;
-            url += $"?addevents={addevents}";
+            url += "?addevents=true";
         }
-        if (addheaders != default)
+        if (addheaders)
         {
             if (firstParam)
             {
@@ -836,9 +836,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addheaders={addheaders}";
+            url += "?addheaders=true";
         }
-        if (addonlinelink != default)
+        if (addonlinelink)
         {
             if (firstParam)
             {
@@ -849,9 +849,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addonlinelink={addonlinelink}";
+            url += "?addonlinelink=true";
         }
-        if (addtags != default)
+        if (addtags)
         {
             if (firstParam)
             {
@@ -862,7 +862,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addtags={addtags}";
+            url += "?addtags=true";
         }
         if (sortfield != default)
         {
@@ -893,9 +893,9 @@ public partial class FlowMailerClient : IFlowMailerClient
         {
             url += $";daterange={daterange}";
         }
-        if (flow_ids != default)
+        if (flowIds != default)
         {
-            url += $";flow_ids={flow_ids}";
+            url += $";flowIds={flowIds}";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -913,7 +913,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="request"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<SimulateMessageResult> SimulateMessages(SimulateMessage request, CancellationToken cancellationToken = default)
+    public async Task<SimulateMessageResult> SimulateMessage(SimulateMessage request, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -939,7 +939,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="request"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> SendMessages(SubmitMessage request, CancellationToken cancellationToken = default)
+    public async Task<string> SubmitMessage(SubmitMessage request, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -967,11 +967,11 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get message by id
-    /// <param name="message_id">Message ID</param>
+    /// <param name="messageId">Message ID</param>
     /// <param name="addtags"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<Message> GetMessages(string message_id, bool addtags = default, CancellationToken cancellationToken = default)
+    public async Task<Message> GetMessage(string messageId, bool addtags = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -980,10 +980,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/messages/{message_id}";
-        if (addtags != default)
+        var url = $"https://api.flowmailer.net/{_accountId}/messages/{messageId}";
+        if (addtags)
         {
-            url += $"?addtags={addtags}";
+            url += "?addtags=true";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -997,12 +997,12 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// List the message as archived by one or more flow steps
-    /// <param name="message_id">Message ID</param>
+    /// <param name="messageId">Message ID</param>
     /// <param name="addattachments"></param>
     /// <param name="adddata"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<MessageArchive>> ListArchiveByMessage(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default)
+    public async Task<List<MessageArchive>> ListArchivedAsMessage(string messageId, bool addattachments = false, bool adddata = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1011,14 +1011,14 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/messages/{message_id}/archive";
+        var url = $"https://api.flowmailer.net/{_accountId}/messages/{messageId}/archive";
         var firstParam = true;
-        if (addattachments != default)
+        if (addattachments)
         {
             firstParam = false;
-            url += $"?addattachments={addattachments}";
+            url += "?addattachments=true";
         }
-        if (adddata != default)
+        if (adddata)
         {
             if (firstParam)
             {
@@ -1028,7 +1028,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"adddata={adddata}";
+            url += "?adddata=true";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -1042,12 +1042,12 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Fetch an attachment including data for an archived message
-    /// <param name="content_id">Attachment content ID</param>
-    /// <param name="flow_step_id">Flow step ID</param>
-    /// <param name="message_id">Message ID</param>
+    /// <param name="contentId">Attachment content ID</param>
+    /// <param name="flowStepId">Flow step ID</param>
+    /// <param name="messageId">Message ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<Attachment> FetchAttachmentByArchiveAndMessageByFlowStepIdAndContentId(string content_id, string flow_step_id, string message_id, CancellationToken cancellationToken = default)
+    public async Task<Attachment> FetchAttachmentForAnArchivedMessageByFlowStepIdAndContentId(string contentId, string flowStepId, string messageId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1056,7 +1056,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/messages/{message_id}/archive/{flow_step_id}/attachment/{content_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/messages/{messageId}/archive/{flowStepId}/attachment/{contentId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1067,7 +1067,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
-    public async Task<MessageArchive> GetErrorArchiveByMessages(string message_id, bool addattachments = default, bool adddata = default, CancellationToken cancellationToken = default)
+    public async Task<MessageArchive> GetErrorArchiveByMessages(string messageId, bool addattachments = false, bool adddata = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1076,14 +1076,14 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/messages/{message_id}/error_archive";
+        var url = $"https://api.flowmailer.net/{_accountId}/messages/{messageId}/error_archive";
         var firstParam = true;
-        if (addattachments != default)
+        if (addattachments)
         {
             firstParam = false;
-            url += $"?addattachments={addattachments}";
+            url += "?addattachments=true";
         }
-        if (adddata != default)
+        if (adddata)
         {
             if (firstParam)
             {
@@ -1093,7 +1093,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"adddata={adddata}";
+            url += "?adddata=true";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -1108,10 +1108,10 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Resend message by id
     /// <param name="request"></param>
-    /// <param name="message_id">Message ID</param>
+    /// <param name="messageId">Message ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> ResendMessages(ResendMessage request, string message_id, CancellationToken cancellationToken = default)
+    public async Task<string> ResendMessage(ResendMessage request, string messageId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1120,7 +1120,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/messages/{message_id}/resend";
+        var url = $"https://api.flowmailer.net/{_accountId}/messages/{messageId}/resend";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1140,11 +1140,11 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Get time based message statistics for whole account
     /// <param name="daterange">Date range the messages were submitted in</param>
-    /// <param name="flow_ids"></param>
+    /// <param name="flowIds"></param>
     /// <param name="interval">Time difference between samples</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<DataSets> GetMessagestats(date_range daterange, List<string> flow_ids = default, int interval = default, CancellationToken cancellationToken = default)
+    public async Task<DataSets> GetMessageStats(date_range daterange, List<string> flowIds = default, int interval = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1162,9 +1162,9 @@ public partial class FlowMailerClient : IFlowMailerClient
         {
             url += $";daterange={daterange}";
         }
-        if (flow_ids != default)
+        if (flowIds != default)
         {
-            url += $";flow_ids={flow_ids}";
+            url += $";flowIds={flowIds}";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -1217,7 +1217,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessagesPerRecipient(ref_range range, string recipient, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessagesPerRecipient(ref_range range, string recipient, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1228,12 +1228,12 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         var url = $"https://api.flowmailer.net/{_accountId}/recipient/{recipient}/messages";
         var firstParam = true;
-        if (addheaders != default)
+        if (addheaders)
         {
             firstParam = false;
-            url += $"?addheaders={addheaders}";
+            url += "?addheaders=true";
         }
-        if (addonlinelink != default)
+        if (addonlinelink)
         {
             if (firstParam)
             {
@@ -1244,9 +1244,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addonlinelink={addonlinelink}";
+            url += "?addonlinelink=true";
         }
-        if (addtags != default)
+        if (addtags)
         {
             if (firstParam)
             {
@@ -1257,7 +1257,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addtags={addtags}";
+            url += "?addtags=true";
         }
         if (sortorder != default)
         {
@@ -1297,7 +1297,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessagesPerSender(ref_range range, string sender, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessagesPerSender(ref_range range, string sender, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1308,12 +1308,12 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         var url = $"https://api.flowmailer.net/{_accountId}/sender/{sender}/messages";
         var firstParam = true;
-        if (addheaders != default)
+        if (addheaders)
         {
             firstParam = false;
-            url += $"?addheaders={addheaders}";
+            url += "?addheaders=true";
         }
-        if (addonlinelink != default)
+        if (addonlinelink)
         {
             if (firstParam)
             {
@@ -1324,9 +1324,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addonlinelink={addonlinelink}";
+            url += "?addonlinelink=true";
         }
-        if (addtags != default)
+        if (addtags)
         {
             if (firstParam)
             {
@@ -1337,7 +1337,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addtags={addtags}";
+            url += "?addtags=true";
         }
         if (sortorder != default)
         {
@@ -1427,7 +1427,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="validate">Validate DNS records for this SenderDomain</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<SenderDomain> GetByDomainBySenderDomains(string domain, bool validate = default, CancellationToken cancellationToken = default)
+    public async Task<SenderDomain> GetByBySenderDomains(string domain, bool validate = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1437,9 +1437,9 @@ public partial class FlowMailerClient : IFlowMailerClient
         using var client = _clientFactory.CreateClient();
 
         var url = $"https://api.flowmailer.net/{_accountId}/sender_domains/by_domain/{domain}";
-        if (validate != default)
+        if (validate)
         {
-            url += $"?validate={validate}";
+            url += "?validate=true";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -1479,10 +1479,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Delete sender domain
-    /// <param name="domain_id">Sender domain ID</param>
+    /// <param name="domainId">Sender domain ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> DeleteSenderDomains(string domain_id, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteSenderDomains(string domainId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1491,7 +1491,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sender_domains/{domain_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sender_domains/{domainId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1509,11 +1509,11 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get sender domain by id
-    /// <param name="domain_id">Sender domain ID</param>
+    /// <param name="domainId">Sender domain ID</param>
     /// <param name="validate">Validate DNS records for this SenderDomain</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<SenderDomain> GetSenderDomains(string domain_id, bool validate = default, CancellationToken cancellationToken = default)
+    public async Task<SenderDomain> GetSenderDomains(string domainId, bool validate = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1522,10 +1522,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sender_domains/{domain_id}";
-        if (validate != default)
+        var url = $"https://api.flowmailer.net/{_accountId}/sender_domains/{domainId}";
+        if (validate)
         {
-            url += $"?validate={validate}";
+            url += "?validate=true";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -1540,10 +1540,10 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Save sender domain
     /// <param name="request"></param>
-    /// <param name="domain_id">Sender domain ID</param>
+    /// <param name="domainId">Sender domain ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> SaveSenderDomains(SenderDomain request, string domain_id, CancellationToken cancellationToken = default)
+    public async Task<string> SaveSenderDomains(SenderDomain request, string domainId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1552,7 +1552,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sender_domains/{domain_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sender_domains/{domainId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1626,10 +1626,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Delete sender identity
-    /// <param name="identity_id">Sender identity ID</param>
+    /// <param name="identityId">Sender identity ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> DeleteSenderIdentitiesByIdentityId(string identity_id, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteSenderIdentitiesByIdentityId(string identityId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1638,7 +1638,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sender_identities/{identity_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sender_identities/{identityId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1656,10 +1656,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get sender identity by id
-    /// <param name="identity_id">Sender identity ID</param>
+    /// <param name="identityId">Sender identity ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<SenderIdentity> GetSenderIdentitiesByIdentityId(string identity_id, CancellationToken cancellationToken = default)
+    public async Task<SenderIdentity> GetSenderIdentitiesByIdentityId(string identityId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1668,7 +1668,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sender_identities/{identity_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sender_identities/{identityId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1682,10 +1682,10 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Save sender identity
     /// <param name="request"></param>
-    /// <param name="identity_id">Sender identity ID</param>
+    /// <param name="identityId">Sender identity ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> SaveSenderIdentitiesByIdentityId(SenderIdentity request, string identity_id, CancellationToken cancellationToken = default)
+    public async Task<string> SaveSenderIdentitiesByIdentityId(SenderIdentity request, string identityId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1694,7 +1694,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sender_identities/{identity_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sender_identities/{identityId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1716,7 +1716,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="statistics">Whether to include message statistics or not</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Source>> ListSources(bool statistics = default, CancellationToken cancellationToken = default)
+    public async Task<List<Source>> ListSourceSystems(bool statistics = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1726,9 +1726,9 @@ public partial class FlowMailerClient : IFlowMailerClient
         using var client = _clientFactory.CreateClient();
 
         var url = $"https://api.flowmailer.net/{_accountId}/sources";
-        if (statistics != default)
+        if (statistics)
         {
-            url += $"?statistics={statistics}";
+            url += "?statistics=true";
         }
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
@@ -1766,7 +1766,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
-    public async Task<string> DeleteSources(string source_id, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteSources(string sourceId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1775,7 +1775,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1793,10 +1793,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get a source by id
-    /// <param name="source_id">Source ID</param>
+    /// <param name="sourceId">Source ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<Source> GetSources(string source_id, CancellationToken cancellationToken = default)
+    public async Task<Source> GetSource(string sourceId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1805,7 +1805,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1816,7 +1816,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
-    public async Task<string> UpdateSources(Source request, string source_id, CancellationToken cancellationToken = default)
+    public async Task<string> UpdateSources(Source request, string sourceId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1825,7 +1825,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1846,13 +1846,13 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// List messages per source
     /// <param name="daterange">Date range the message was submitted in</param>
     /// <param name="range">Limits the returned list</param>
-    /// <param name="source_id">Source ID</param>
+    /// <param name="sourceId">Source ID</param>
     /// <param name="addheaders">Whether to add e-mail headers</param>
     /// <param name="addonlinelink"></param>
     /// <param name="addtags"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessagesPerSource(date_range daterange, items_range range, string source_id, bool addheaders = default, bool addonlinelink = default, bool addtags = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessagesPerSource(date_range daterange, items_range range, string sourceId, bool addheaders = false, bool addonlinelink = false, bool addtags = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1861,14 +1861,14 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}/messages";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}/messages";
         var firstParam = true;
-        if (addheaders != default)
+        if (addheaders)
         {
             firstParam = false;
-            url += $"?addheaders={addheaders}";
+            url += "?addheaders=true";
         }
-        if (addonlinelink != default)
+        if (addonlinelink)
         {
             if (firstParam)
             {
@@ -1879,9 +1879,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addonlinelink={addonlinelink}";
+            url += "?addonlinelink=true";
         }
-        if (addtags != default)
+        if (addtags)
         {
             if (firstParam)
             {
@@ -1891,7 +1891,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addtags={addtags}";
+            url += "?addtags=true";
         }
         if (daterange != default)
         {
@@ -1911,11 +1911,11 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Get time based message statistics for a message source
     /// <param name="daterange">Date range the messages were submitted in</param>
-    /// <param name="source_id">Source ID</param>
+    /// <param name="sourceId">Source ID</param>
     /// <param name="interval">Time difference between samples</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<DataSets> GetStatsForSource(date_range daterange, string source_id, int interval = default, CancellationToken cancellationToken = default)
+    public async Task<DataSets> GetStatisticsForASource(date_range daterange, string sourceId, int interval = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1924,7 +1924,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}/stats";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}/stats";
         if (daterange != default)
         {
             url += $";daterange={daterange}";
@@ -1945,10 +1945,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// List credentials per source system
-    /// <param name="source_id">Source ID</param>
+    /// <param name="sourceId">Source ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Credentials>> ListUsersPerSource(string source_id, CancellationToken cancellationToken = default)
+    public async Task<List<Credentials>> ListUsersPerSourceSystem(string sourceId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1957,7 +1957,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}/users";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}/users";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1968,7 +1968,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
-    public async Task<Credentials> PostUsersBySources(Credentials request, string source_id, CancellationToken cancellationToken = default)
+    public async Task<Credentials> PostUsersBySources(Credentials request, string sourceId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1977,7 +1977,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}/users";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}/users";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -1989,7 +1989,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
-    public async Task<string> DeleteUsersBySources(string source_id, string user_id, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteUsersBySources(string sourceId, string userId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1998,7 +1998,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}/users/{user_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}/users/{userId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -2014,7 +2014,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
-    public async Task<Credentials> GetUsersBySources(string source_id, string user_id, CancellationToken cancellationToken = default)
+    public async Task<Credentials> GetUsersBySources(string sourceId, string userId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2023,7 +2023,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}/users/{user_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}/users/{userId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -2034,7 +2034,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
-    public async Task<Credentials> UpdateUsersBySources(Credentials request, string source_id, string user_id, CancellationToken cancellationToken = default)
+    public async Task<Credentials> UpdateUsersBySources(Credentials request, string sourceId, string userId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2043,7 +2043,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/sources/{source_id}/users/{user_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/sources/{sourceId}/users/{userId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -2066,7 +2066,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessagesPerTag(ref_range range, string tag, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessagesPerTag(ref_range range, string tag, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2077,12 +2077,12 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         var url = $"https://api.flowmailer.net/{_accountId}/tag/{tag}/messages";
         var firstParam = true;
-        if (addheaders != default)
+        if (addheaders)
         {
             firstParam = false;
-            url += $"?addheaders={addheaders}";
+            url += "?addheaders=true";
         }
-        if (addonlinelink != default)
+        if (addonlinelink)
         {
             if (firstParam)
             {
@@ -2093,9 +2093,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addonlinelink={addonlinelink}";
+            url += "?addonlinelink=true";
         }
-        if (addtags != default)
+        if (addtags)
         {
             if (firstParam)
             {
@@ -2106,7 +2106,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addtags={addtags}";
+            url += "?addtags=true";
         }
         if (sortorder != default)
         {
@@ -2164,7 +2164,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="request">Template object</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> CreateTemplates(Template request, CancellationToken cancellationToken = default)
+    public async Task<string> CreateTemplate(Template request, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2192,10 +2192,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Delete template by id
-    /// <param name="template_id">Template ID</param>
+    /// <param name="templateId">Template ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> DeleteTemplates(string template_id, CancellationToken cancellationToken = default)
+    public async Task<string> DeleteTemplate(string templateId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2204,7 +2204,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/templates/{template_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/templates/{templateId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -2222,10 +2222,10 @@ public partial class FlowMailerClient : IFlowMailerClient
 
     /// <summary>
     /// Get template by id
-    /// <param name="template_id">Template ID</param>
+    /// <param name="templateId">Template ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<Template> GetTemplates(string template_id, CancellationToken cancellationToken = default)
+    public async Task<Template> GetTemplate(string templateId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2234,7 +2234,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/templates/{template_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/templates/{templateId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -2248,10 +2248,10 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <summary>
     /// Save template
     /// <param name="request">Template object</param>
-    /// <param name="template_id">Template ID</param>
+    /// <param name="templateId">Template ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> SaveTemplates(Template request, string template_id, CancellationToken cancellationToken = default)
+    public async Task<string> SaveTemplate(Template request, string templateId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2260,7 +2260,7 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         using var client = _clientFactory.CreateClient();
 
-        var url = $"https://api.flowmailer.net/{_accountId}/templates/{template_id}";
+        var url = $"https://api.flowmailer.net/{_accountId}/templates/{templateId}";
 
         var requestMessage = new HttpRequestMessage(HttpMethod.Put, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
@@ -2289,7 +2289,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<BouncedMessage>> ListUndeliveredmessages(ref_range range, bool addevents = default, bool addheaders = default, bool addonlinelink = default, bool addtags = default, date_range daterange = default, date_range receivedrange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<BouncedMessage>> ListUndeliveredMessages(ref_range range, bool addevents = false, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, date_range receivedrange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2300,12 +2300,12 @@ public partial class FlowMailerClient : IFlowMailerClient
 
         var url = $"https://api.flowmailer.net/{_accountId}/undeliveredmessages";
         var firstParam = true;
-        if (addevents != default)
+        if (addevents)
         {
             firstParam = false;
-            url += $"?addevents={addevents}";
+            url += "?addevents=true";
         }
-        if (addheaders != default)
+        if (addheaders)
         {
             if (firstParam)
             {
@@ -2316,9 +2316,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addheaders={addheaders}";
+            url += "?addheaders=true";
         }
-        if (addonlinelink != default)
+        if (addonlinelink)
         {
             if (firstParam)
             {
@@ -2329,9 +2329,9 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addonlinelink={addonlinelink}";
+            url += "?addonlinelink=true";
         }
-        if (addtags != default)
+        if (addtags)
         {
             if (firstParam)
             {
@@ -2342,7 +2342,7 @@ public partial class FlowMailerClient : IFlowMailerClient
             {
                 url += "&";
             }
-            url += $"addtags={addtags}";
+            url += "?addtags=true";
         }
         if (sortorder != default)
         {
