@@ -15,6 +15,11 @@ public class OAuthTokenResponse
 
     public bool IsExpired()
     {
-        throw new NotImplementedException();
+        if (Received.AddMinutes(ExpiresIn - 1) > DateTime.Now)
+        {
+            return false;
+        }
+           
+        return true;
     }
 }

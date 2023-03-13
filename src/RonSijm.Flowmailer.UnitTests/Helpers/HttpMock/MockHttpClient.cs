@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using System.Threading;
+﻿using System.Threading;
 
 namespace RonSijm.Flowmailer.UnitTests.Helpers.HttpMock;
 
@@ -14,6 +13,6 @@ public class MockHttpClient : HttpClient
 
     public override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-        return _mockHttpMessageHandler.SendAsync(request, cancellationToken);
+        return _mockHttpMessageHandler.SendAsync(request);
     }
 }

@@ -2,7 +2,7 @@
 
 public class Exception : System.Exception
 {
-    public Exception() : base()
+    public Exception()
     {
         
     }

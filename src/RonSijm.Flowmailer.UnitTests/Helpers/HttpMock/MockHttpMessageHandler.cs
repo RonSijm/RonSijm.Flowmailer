@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using System.Threading;
+﻿using System.Threading;
 
 namespace RonSijm.Flowmailer.UnitTests.Helpers.HttpMock;
 
@@ -17,7 +16,7 @@ public class MockHttpMessageHandler
         _responses.Add(x => x == url, (code, func));
     }
 
-    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
     {
         if (request.RequestUri == null)
         {

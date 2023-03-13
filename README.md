@@ -1,5 +1,7 @@
 # RonSijm.Flowmailer
 
+[![.NET](https://github.com/RonSijm/RonSijm.Flowmailer/actions/workflows/build_main.yml/badge.svg?branch=main)](https://github.com/RonSijm/RonSijm.Flowmailer/actions/workflows/dotnet.yml) [![Nuget](https://img.shields.io/nuget/v/RonSijm.Flowmailer)](https://www.nuget.org/packages/RonSijm.Flowmailer/) [![codecov](https://codecov.io/gh/RonSijm/RonSijm.Flowmailer/branch/main/graph/badge.svg?token=PIDRVFD6IW)](https://codecov.io/gh/RonSijm/RonSijm.Flowmailer)
+
 C# client library implementing all Flowmailer API methods
 
 API documentation: https://flowmailer.com/apidoc/flowmailer-api

@@ -1,6 +1,4 @@
-﻿using RonSijm.Flowmailer.Helpers;
-
-namespace RonSijm.Flowmailer;
+﻿namespace RonSijm.Flowmailer;
 
 public partial class FlowMailerClient
 {

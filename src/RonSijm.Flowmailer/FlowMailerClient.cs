@@ -3,9 +3,8 @@ using System.Net.Http.Headers;
 
 namespace RonSijm.Flowmailer;
 
-public partial class FlowMailerClient 
+public partial class FlowMailerClient : IFlowMailerClient
 {
-
     /// <summary>
     /// Get flow rule list for all event flows
     /// <param name="cancellationToken">A token to cancel the request</param>

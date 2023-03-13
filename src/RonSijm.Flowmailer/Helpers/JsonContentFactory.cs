@@ -4,7 +4,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace RonSijm.Flowmailer.Helpers;
 
-public class JsonContentFactory
+public static class JsonContentFactory
 {
     public static HttpContent Create(object content)
     {
