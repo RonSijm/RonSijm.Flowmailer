@@ -3,7 +3,7 @@
 /// <summary>
 /// a SenderDomain configures which return-path and online tracking domain is used to send messages
 /// </summary>
-public class SenderDomain
+public class SenderDomainModel
 {
     /// <summary>
     /// a SenderDomain configures which return-path and online tracking domain is used to send messages
@@ -24,7 +24,7 @@ public class SenderDomain
     /// a SenderDomain configures which return-path and online tracking domain is used to send messages
     /// </summary>
     [JsonProperty("senderDomain", NullValueHandling = NullValueHandling.Ignore)]
-    public string SenderDomainValue { get; set; }
+    public string SenderDomain { get; set; }
     /// <summary>
     /// a SenderDomain configures which return-path and online tracking domain is used to send messages
     /// </summary>

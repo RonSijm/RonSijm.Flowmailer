@@ -13,7 +13,7 @@ public class Message
     [JsonProperty("from", NullValueHandling = NullValueHandling.Ignore)]
     public string From { get; set; }
     [JsonProperty("fromAddress", NullValueHandling = NullValueHandling.Ignore)]
-    public Address FromAddress { get; set; }
+    public AddressModel FromAddress { get; set; }
     [JsonProperty("headersIn", NullValueHandling = NullValueHandling.Ignore)]
     public Header[] HeadersIn { get; set; }
     [JsonProperty("headersOut", NullValueHandling = NullValueHandling.Ignore)]
@@ -43,7 +43,7 @@ public class Message
     [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
     public string[] Tags { get; set; }
     [JsonProperty("toAddressList", NullValueHandling = NullValueHandling.Ignore)]
-    public Address[] ToAddressList { get; set; }
+    public AddressModel[] ToAddressList { get; set; }
     [JsonProperty("transactionId", NullValueHandling = NullValueHandling.Ignore)]
     public string TransactionId { get; set; }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33326.253
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RonSijm.Flowmailer", "RonSijm.Flowmailer\RonSijm.Flowmailer.csproj", "{990A9831-9B85-471B-9ACC-051EBE4507A7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RonSijm.Flowmailer.UnitTests", "RonSijm.Flowmailer.UnitTests\RonSijm.Flowmailer.UnitTests.csproj", "{8324D8A1-0501-41AE-8128-B069D81C215A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Core7|Any CPU = Core7|Any CPU
@@ -18,6 +20,12 @@ Global
 		{990A9831-9B85-471B-9ACC-051EBE4507A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990A9831-9B85-471B-9ACC-051EBE4507A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990A9831-9B85-471B-9ACC-051EBE4507A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8324D8A1-0501-41AE-8128-B069D81C215A}.Core7|Any CPU.ActiveCfg = Debug|Any CPU
+		{8324D8A1-0501-41AE-8128-B069D81C215A}.Core7|Any CPU.Build.0 = Debug|Any CPU
+		{8324D8A1-0501-41AE-8128-B069D81C215A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8324D8A1-0501-41AE-8128-B069D81C215A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8324D8A1-0501-41AE-8128-B069D81C215A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8324D8A1-0501-41AE-8128-B069D81C215A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

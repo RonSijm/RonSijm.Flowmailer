@@ -1,17 +1,11 @@
-﻿namespace RonSijm.Flowmailer.DataTypes;
+﻿using System.Net.Http.Headers;
 
-public class items_range
+namespace RonSijm.Flowmailer.DataTypes;
+
+public class items_range : RangeHeaderValue
 {
-    public int? Skip { get; set; }
-    public int Take { get; set; }
-
-    public override string ToString()
+    public items_range()
     {
-        if (!Skip.HasValue)
-        {
-            return $"items=:{Take}";
-        }
-
-        return $"items={Skip.Value}-{Take}";
+        Unit = "Items";
     }
 }

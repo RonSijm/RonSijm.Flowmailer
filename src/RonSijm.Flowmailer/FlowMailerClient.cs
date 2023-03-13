@@ -1,8 +1,11 @@
 ﻿// ReSharper disable UnusedMember.Global
+using System.Net.Http.Headers;
+
 namespace RonSijm.Flowmailer;
 
-public partial class FlowMailerClient : IFlowMailerClient
+public partial class FlowMailerClient 
 {
+
     /// <summary>
     /// Get flow rule list for all event flows
     /// <param name="cancellationToken">A token to cancel the request</param>
@@ -262,7 +265,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Filter>> ListFilters(ref_range range, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Filter>> ListFilters(RangeHeaderValue range, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -284,7 +287,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<Filter>>(result);
@@ -575,7 +578,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<Message>>(result);
@@ -685,7 +688,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sourceIds">Filter results on message source ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<MessageEvent>> ListMessageEvents(ref_range range, bool addmessagetags = false, date_range daterange = default, List<string> flowIds = default, date_range receivedrange = default, string sortorder = default, List<string> sourceIds = default, CancellationToken cancellationToken = default)
+    public async Task<List<MessageEvent>> ListMessageEvents(RangeHeaderValue range, bool addmessagetags = false, date_range daterange = default, List<string> flowIds = default, date_range receivedrange = default, string sortorder = default, List<string> sourceIds = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -733,7 +736,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<MessageEvent>>(result);
@@ -764,7 +767,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<MessageHold>>(result);
@@ -809,7 +812,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessages(ref_range range, bool addevents = false, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, List<string> flowIds = default, string sortfield = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessages(RangeHeaderValue range, bool addevents = false, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, List<string> flowIds = default, string sortfield = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -901,7 +904,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<Message>>(result);
@@ -1217,7 +1220,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessagesPerRecipient(ref_range range, string recipient, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessagesPerRecipient(RangeHeaderValue range, string recipient, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1279,7 +1282,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<Message>>(result);
@@ -1297,7 +1300,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessagesPerSender(ref_range range, string sender, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessagesPerSender(RangeHeaderValue range, string sender, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1359,7 +1362,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<Message>>(result);
@@ -1370,7 +1373,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// List sender domains by account
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<SenderDomain>> ListSenderDomains(CancellationToken cancellationToken = default)
+    public async Task<List<SenderDomainModel>> ListSenderDomains(CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1386,7 +1389,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
-        var parseResult = await HttpResultParser.ParseRawResult<List<SenderDomain>>(result);
+        var parseResult = await HttpResultParser.ParseRawResult<List<SenderDomainModel>>(result);
         return parseResult;
     }
 
@@ -1395,7 +1398,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="request"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> CreateSenderDomains(SenderDomain request, CancellationToken cancellationToken = default)
+    public async Task<string> CreateSenderDomains(SenderDomainModel request, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1427,7 +1430,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="validate">Validate DNS records for this SenderDomain</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<SenderDomain> GetByBySenderDomains(string domain, bool validate = false, CancellationToken cancellationToken = default)
+    public async Task<SenderDomainModel> GetByBySenderDomains(string domain, bool validate = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1447,7 +1450,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
-        var parseResult = await HttpResultParser.ParseRawResult<SenderDomain>(result);
+        var parseResult = await HttpResultParser.ParseRawResult<SenderDomainModel>(result);
         return parseResult;
     }
 
@@ -1456,7 +1459,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="request">the sender domain to validate</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<SenderDomain> ValidatesSenderDomains(SenderDomain request, CancellationToken cancellationToken = default)
+    public async Task<SenderDomainModel> ValidatesSenderDomains(SenderDomainModel request, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1473,7 +1476,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         requestMessage.Content = JsonContentFactory.Create(request);
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
-        var parseResult = await HttpResultParser.ParseRawResult<SenderDomain>(result);
+        var parseResult = await HttpResultParser.ParseRawResult<SenderDomainModel>(result);
         return parseResult;
     }
 
@@ -1513,7 +1516,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="validate">Validate DNS records for this SenderDomain</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<SenderDomain> GetSenderDomains(string domainId, bool validate = false, CancellationToken cancellationToken = default)
+    public async Task<SenderDomainModel> GetSenderDomains(string domainId, bool validate = false, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1533,7 +1536,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
-        var parseResult = await HttpResultParser.ParseRawResult<SenderDomain>(result);
+        var parseResult = await HttpResultParser.ParseRawResult<SenderDomainModel>(result);
         return parseResult;
     }
 
@@ -1543,7 +1546,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="domainId">Sender domain ID</param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<string> SaveSenderDomains(SenderDomain request, string domainId, CancellationToken cancellationToken = default)
+    public async Task<string> SaveSenderDomains(SenderDomainModel request, string domainId, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -1901,7 +1904,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<Message>>(result);
@@ -2066,7 +2069,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<Message>> ListMessagesPerTag(ref_range range, string tag, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<Message>> ListMessagesPerTag(RangeHeaderValue range, string tag, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2128,7 +2131,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<Message>>(result);
@@ -2289,7 +2292,7 @@ public partial class FlowMailerClient : IFlowMailerClient
     /// <param name="sortorder"></param>
     /// <param name="cancellationToken">A token to cancel the request</param>
     /// </summary>
-    public async Task<List<BouncedMessage>> ListUndeliveredMessages(ref_range range, bool addevents = false, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, date_range receivedrange = default, string sortorder = default, CancellationToken cancellationToken = default)
+    public async Task<List<BouncedMessage>> ListUndeliveredMessages(RangeHeaderValue range, bool addevents = false, bool addheaders = false, bool addonlinelink = false, bool addtags = false, date_range daterange = default, date_range receivedrange = default, string sortorder = default, CancellationToken cancellationToken = default)
     {
         if (_oauthTokenResponse == null || _oauthTokenResponse.IsExpired())
         {
@@ -2368,7 +2371,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
         requestMessage.Headers.Add("Authorization", $"Bearer {_oauthTokenResponse.AccessToken}");
         requestMessage.Headers.Add("Accept", "application/vnd.flowmailer.v1.12+json");
-        requestMessage.Headers.Add("range", range.ToString());
+        requestMessage.Headers.Range = range;
 
         var result = await client.SendAsync(requestMessage, cancellationToken);
         var parseResult = await HttpResultParser.ParseRawResult<List<BouncedMessage>>(result);

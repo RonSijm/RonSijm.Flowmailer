@@ -8,7 +8,6 @@ public class OAuthTokenResponse
     [JsonProperty("scope", NullValueHandling = NullValueHandling.Ignore)]
     public string Scope { get; set; }
 
-
     [JsonProperty("expires_in", NullValueHandling = NullValueHandling.Ignore)]
     public int ExpiresIn { get; set; }
 

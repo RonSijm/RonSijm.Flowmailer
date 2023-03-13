@@ -54,7 +54,7 @@ public class BouncedMessage
     /// Undeliverable message
     /// </summary>
     [JsonProperty("fromAddress", NullValueHandling = NullValueHandling.Ignore)]
-    public Address FromAddress { get; set; }
+    public AddressModel FromAddress { get; set; }
     /// <summary>
     /// Undeliverable message
     /// </summary>
@@ -129,7 +129,7 @@ public class BouncedMessage
     /// Undeliverable message
     /// </summary>
     [JsonProperty("toAddressList", NullValueHandling = NullValueHandling.Ignore)]
-    public Address[] ToAddressList { get; set; }
+    public AddressModel[] ToAddressList { get; set; }
     /// <summary>
     /// Undeliverable message
     /// </summary>
