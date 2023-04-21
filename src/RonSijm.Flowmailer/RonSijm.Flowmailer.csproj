@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.1;net6.0;net7.0;net481</TargetFrameworks>
 		<LangVersion>11</LangVersion>
-		<VersionPrefix>1.0.7.1</VersionPrefix>
+		<VersionPrefix>1.0.7.2</VersionPrefix>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>RonSijm.Flowmailer</Title>
@@ -17,17 +17,16 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
-		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.*" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' != 'net7.0'">
-		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="6.*" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.*" />
 	</ItemGroup>
-
 
 	<ItemGroup>
 		<None Include="..\..\packaging\flowmailer-package-logo.png" Pack="true" PackagePath="packaging"/>
