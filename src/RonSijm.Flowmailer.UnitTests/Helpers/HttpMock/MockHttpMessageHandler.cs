@@ -1,6 +1,4 @@
-﻿using System.Threading;
-
-namespace RonSijm.Flowmailer.UnitTests.Helpers.HttpMock;
+﻿namespace RonSijm.Flowmailer.UnitTests.Helpers.HttpMock;
 
 public class MockHttpMessageHandler
 {

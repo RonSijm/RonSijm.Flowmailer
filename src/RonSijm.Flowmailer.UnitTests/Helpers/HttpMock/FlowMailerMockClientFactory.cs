@@ -5,7 +5,7 @@ public static class FlowMailerMockClientFactory
     public static MockHttpClientFactory Create(Action<MockHttpMessageHandler> setup)
     {
         var mockHandler = new MockHttpMessageHandler();
-        var token = new OAuthTokenResponse() { AccessToken = "MockAccessToken", ExpiresIn = 99, Received = DateTime.Now, Scope = "API" };
+        var token = new OAuthTokenResponse { AccessToken = "MockAccessToken", ExpiresIn = 99, Received = DateTime.Now, Scope = "API" };
 
         mockHandler.When("https://login.flowmailer.net/oauth/token", HttpStatusCode.OK, _ => new StringContent(JsonConvert.SerializeObject(token)));
         setup(mockHandler);

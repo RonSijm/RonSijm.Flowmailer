@@ -1,5 +1,6 @@
 ﻿namespace RonSijm.Flowmailer.DataTypes;
 
+// ReSharper disable once InconsistentNaming
 public class date_range
 {
     public DateTime Start { get; set; }

@@ -5,6 +5,7 @@ namespace RonSijm.Flowmailer;
 
 public partial class FlowMailerClient : IFlowMailerClient
 {
+    /// <inheritdoc />
     /// <summary>
     /// Get flow rule list for all event flows
     /// <param name="cancellationToken">A token to cancel the request</param>
@@ -34,6 +35,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Get flow rule list for all event flows
     /// <param name="cancellationToken">A token to cancel the request</param>
@@ -63,6 +65,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// List flows per account
     /// <param name="cancellationToken">A token to cancel the request</param>
@@ -87,6 +90,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Create a new flow
     /// <param name="request">Flow object</param>
@@ -118,6 +122,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Delete flow by id
     /// <param name="eventFlowId">Flow ID</param>
@@ -148,6 +153,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Get flow by id
     /// <param name="eventFlowId">Flow ID</param>
@@ -173,6 +179,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Save flow
     /// <param name="request">Flow object</param>
@@ -200,6 +207,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Get flow conditions for a flow
     /// <param name="eventFlowId">Flow ID</param>
@@ -225,6 +233,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Set conditions for a flow
     /// <param name="request">Flow conditions</param>
@@ -257,6 +266,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// List filters per account
     /// <param name="range">Limits the returned list</param>
@@ -293,6 +303,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Delete a recipient from the filter
     /// <param name="filterId">Filter ID</param>
@@ -323,6 +334,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// Get flow rule list for all flows
     /// <param name="cancellationToken">A token to cancel the request</param>
@@ -352,6 +364,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return messageContent;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// List flow templates per account
     /// <param name="cancellationToken">A token to cancel the request</param>
@@ -376,6 +389,7 @@ public partial class FlowMailerClient : IFlowMailerClient
         return parseResult;
     }
 
+    /// <inheritdoc />
     /// <summary>
     /// List flows per account
     /// <param name="statistics">Whether to return statistics per flow</param>
