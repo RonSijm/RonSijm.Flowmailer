@@ -25,7 +25,8 @@ public static class JsonContentFactory
     private static void SerializeJsonIntoStream(object value, Stream stream)
     {
         using var streamWriter = new StreamWriter(stream, new UTF8Encoding(false), 1024, true);
-        using var jsonTextWriter = new JsonTextWriter(streamWriter) { Formatting = Formatting.None };
+        using var jsonTextWriter = new JsonTextWriter(streamWriter);
+        jsonTextWriter.Formatting = Formatting.None;
         var jsonSerializer = new JsonSerializer { ContractResolver = new CamelCasePropertyNamesContractResolver(), DefaultValueHandling = DefaultValueHandling.Ignore };
         jsonSerializer.Serialize(jsonTextWriter, value);
         jsonTextWriter.Flush();

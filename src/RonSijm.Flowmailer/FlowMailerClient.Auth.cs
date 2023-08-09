@@ -3,7 +3,7 @@
 public partial class FlowMailerClient
 {
     private OAuthTokenResponse _oauthTokenResponse;
-        
+
     /// <summary>
     /// This call is used to request an access token using the client id and secret provided by flowmailer.
     /// </summary>

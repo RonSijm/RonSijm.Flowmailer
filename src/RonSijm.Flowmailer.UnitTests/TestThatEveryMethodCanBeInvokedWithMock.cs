@@ -14,7 +14,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetEventFlowRules();
         response.Should().Be(expectedResponse);
@@ -30,7 +30,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetHierarchyFlowEventFlowRules();
         response.Should().Be(expectedResponse);
@@ -46,7 +46,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListEventFlows();
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -65,7 +65,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.CreateEventFlows(new EventFlow());
         response.Should().Be(expectedResponse);
@@ -81,7 +81,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.DeleteEventByEventFlowId("mockEventFlowId");
         response.Should().Be(expectedResponse);
@@ -97,7 +97,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetEventByEventFlowId("mockEventFlowId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -116,7 +116,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SaveEventByEventFlowId(new EventFlow(), "mockEventFlowId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -135,7 +135,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetRuleForAEventByEventFlowId("mockEventFlowId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -154,7 +154,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SetRuleForAEventByEventFlowId(new EventFlowRuleSimple(), "mockEventFlowId");
         response.Should().Be(expectedResponse);
@@ -175,7 +175,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListFilters(new RangeHeaderValue(), daterange, sortorder);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -194,7 +194,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.DeleteFilter("mockFilterId");
         response.Should().Be(expectedResponse);
@@ -210,7 +210,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetFlowRules();
         response.Should().Be(expectedResponse);
@@ -226,7 +226,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListFlowTemplates();
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -247,7 +247,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListFlows(statistics);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -266,7 +266,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.CreateFlow(new Flow());
         response.Should().Be(expectedResponse);
@@ -282,7 +282,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.DeleteFlow("mockFlowId");
         response.Should().Be(expectedResponse);
@@ -298,7 +298,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetFlow("mockFlowId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -317,7 +317,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SaveFlow(new Flow(), "mockFlowId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -344,7 +344,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListMessagesPerFlow(new date_range(), "mockFlowId", new items_range(), addheaders, addonlinelink, addtags);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -363,7 +363,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetRuleForAFlowConditions("mockFlowId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -382,7 +382,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SetRuleForAFlow(new FlowRuleSimple(), "mockFlowId");
         response.Should().Be(expectedResponse);
@@ -400,7 +400,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetStatisticsForAFlow(new date_range(), "mockFlowId", interval);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -487,7 +487,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListMessageEvents(new RangeHeaderValue(), addmessagetags, daterange, flowIds, receivedrange, sortorder, sourceIds);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -509,7 +509,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListMessageHold(new items_range(), daterange);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -528,7 +528,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetMessageHold("mockMessageId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -805,7 +805,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListMessages(new RangeHeaderValue(), addevents, addheaders, addonlinelink, addtags, daterange, flowIds, sortfield, sortorder);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -824,7 +824,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SimulateMessage(new SimulateMessage());
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -843,7 +843,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SubmitMessage(new SubmitMessage());
         response.Should().Be(expectedResponse);
@@ -861,7 +861,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetMessage("mockMessageId", addtags);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -884,7 +884,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListArchivedAsMessage("mockMessageId", addattachments, adddata);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -903,7 +903,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.FetchAttachmentForAnArchivedMessageByFlowStepIdAndContentId("mockContentId", "mockFlowStepId", "mockMessageId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -926,7 +926,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetErrorArchiveByMessages("mockMessageId", addattachments, adddata);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -945,7 +945,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ResendMessage(new ResendMessage(), "mockMessageId");
         response.Should().Be(expectedResponse);
@@ -966,7 +966,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetMessageStats(new date_range(), flowIds, interval);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -988,7 +988,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetRecipient("mockRecipient", daterange);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1040,7 +1040,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListMessagesPerRecipient(new RangeHeaderValue(), "mockRecipient", addheaders, addonlinelink, addtags, daterange, sortorder);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1092,7 +1092,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListMessagesPerSender(new RangeHeaderValue(), "mockSender", addheaders, addonlinelink, addtags, daterange, sortorder);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1111,7 +1111,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListSenderDomains();
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1130,7 +1130,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.CreateSenderDomains(new SenderDomainModel());
         response.Should().Be(expectedResponse);
@@ -1148,7 +1148,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetByBySenderDomains("mockDomain", validate);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1167,7 +1167,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ValidatesSenderDomains(new SenderDomainModel());
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1186,7 +1186,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.DeleteSenderDomains("mockDomainId");
         response.Should().Be(expectedResponse);
@@ -1204,7 +1204,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetSenderDomains("mockDomainId", validate);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1223,7 +1223,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SaveSenderDomains(new SenderDomainModel(), "mockDomainId");
         response.Should().Be(expectedResponse);
@@ -1239,7 +1239,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListSenderIdentities();
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1258,7 +1258,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.CreateSenderIdentities(new SenderIdentity());
         response.Should().Be(expectedResponse);
@@ -1274,7 +1274,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.DeleteSenderIdentitiesByIdentityId("mockIdentityId");
         response.Should().Be(expectedResponse);
@@ -1290,7 +1290,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetSenderIdentitiesByIdentityId("mockIdentityId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1309,7 +1309,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SaveSenderIdentitiesByIdentityId(new SenderIdentity(), "mockIdentityId");
         response.Should().Be(expectedResponse);
@@ -1327,7 +1327,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListSourceSystems(statistics);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1346,7 +1346,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.PostSources(new Source());
         response.Should().Be(expectedResponse);
@@ -1362,7 +1362,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.DeleteSources("mockSourceId");
         response.Should().Be(expectedResponse);
@@ -1378,7 +1378,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetSource("mockSourceId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1397,7 +1397,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.UpdateSources(new Source(), "mockSourceId");
         response.Should().Be(expectedResponse);
@@ -1421,7 +1421,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListMessagesPerSource(new date_range(), new items_range(), "mockSourceId", addheaders, addonlinelink, addtags);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1442,7 +1442,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetStatisticsForASource(new date_range(), "mockSourceId", interval);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1461,7 +1461,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListUsersPerSourceSystem("mockSourceId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1480,7 +1480,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.PostUsersBySources(new Credentials(), "mockSourceId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1499,7 +1499,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.DeleteUsersBySources("mockSourceId", "mockUserId");
         response.Should().Be(expectedResponse);
@@ -1515,7 +1515,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetUsersBySources("mockSourceId", "mockUserId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1534,7 +1534,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.UpdateUsersBySources(new Credentials(), "mockSourceId", "mockUserId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1586,7 +1586,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListMessagesPerTag(new RangeHeaderValue(), "mockTag", addheaders, addonlinelink, addtags, daterange, sortorder);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1605,7 +1605,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListTemplates();
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1624,7 +1624,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)201, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.CreateTemplate(new Template());
         response.Should().Be(expectedResponse);
@@ -1640,7 +1640,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.DeleteTemplate("mockTemplateId");
         response.Should().Be(expectedResponse);
@@ -1656,7 +1656,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.GetTemplate("mockTemplateId");
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
@@ -1675,7 +1675,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)200, _ => new StringContent(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.SaveTemplate(new Template(), "mockTemplateId");
         response.Should().Be(expectedResponse);
@@ -1821,7 +1821,7 @@ public class TestThatEveryMethodCanBeInvokedWithMock
             mockHandler.WhenStartsWith("https://api.flowmailer.net/", (HttpStatusCode)206, _ => JsonContent.Create(expectedResponse));
         });
 
-        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions() { AccountId = "1337" });
+        var flowMailerClient = new FlowMailerClient(httpClientFactory, new FlowMailerOptions { AccountId = "1337" });
 
         var response = await flowMailerClient.ListUndeliveredMessages(new RangeHeaderValue(), addevents, addheaders, addonlinelink, addtags, daterange, receivedrange, sortorder);
         var responseJson = JsonConvert.SerializeObject(response, Formatting.Indented);
